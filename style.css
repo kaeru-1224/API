@@ -1,0 +1,42 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+    background-color: aliceblue;
+
+}
+.result{
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+.container{
+    margin: 10px;
+    background-color: white;
+    width: 350px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btn-container{
+width: 50%;
+display: flex;
+flex-direction: row;
+justify-content:center;
+}
+.btn{
+    width: 42%;
+    margin: 10px;
+    height: 35px;
+    border: none;
+} 
+img{ width: 350px;
+    height: 400px;
+
+} 
