@@ -49,6 +49,8 @@ img{
     background-color: white;
     width: 300px;
     height: 500px;
+    margin-bottom: 30px;
+    border-radius: 10px;
 }
 .info{
     display: flex;
@@ -64,3 +66,12 @@ img{
 .name{
     margin: 10px 0px;
 }
+.main-contaier:hover{
+border:1px solid cadetblue;
+}
+
+.random{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
