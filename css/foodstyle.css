@@ -1,0 +1,65 @@
+@import url("reset.css");
+
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    display:flex;
+ position: fixed;
+ top: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;}
+.title h1{
+    font-size: 100px;
+    font-family: 'Rampart One', cursive;
+    padding: 5px;
+    margin-bottom: 50px;
+    }
+.search-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;}
+input{
+    width: 450px;
+    height: 50px;
+}
+.btn{
+    margin: 5px;
+    width: 55px;
+    height: 50px;
+}
+.section-item{
+    width: 80%;
+    display:grid;
+    grid-template-columns: repeat(2, 2fr);
+    place-items: center;
+}
+.menu-item{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   margin: 30px 0px;
+}
+img{
+    width: 300px;
+    height: 300px;
+} 
+.item-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.name-price{width: 100%;}
+.name{margin-top: 20px;}
+.price{margin-bottom: 20px;}

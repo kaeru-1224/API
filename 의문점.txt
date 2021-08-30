@@ -1,0 +1,3 @@
+<script src="js/foodscript.js" defer>와 <script src="js/foodscript.js">의차이점?
+
+8/30 html 문제잇는것 같아서 엎고 다시 시작!!
