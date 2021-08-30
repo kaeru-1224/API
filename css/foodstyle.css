@@ -1,65 +1,66 @@
 @import url("reset.css");
-
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 
 body{
+    background-color: aliceblue;
     height: 100vh;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    justify-self:center;}
+
+.title-header{
+    width: 100%;
+    text-align: center;
+
 }
-.title{
-    display:flex;
- position: fixed;
- top: 0px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;}
-.title h1{
-    font-size: 100px;
+.title-name{
     font-family: 'Rampart One', cursive;
+    font-size: 80px;
     padding: 5px;
-    margin-bottom: 50px;
-    }
-.search-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;}
-input{
-    width: 450px;
-    height: 50px;
+    margin: 45px 0px;
+}
+.search-box{
+    text-align: center;
+    width: 600px;
+    height: 60px;
 }
 .btn{
-    margin: 5px;
-    width: 55px;
-    height: 50px;
+    height: 60px;
+    width: 100px;
 }
-.section-item{
+.result{
+    margin: 50px 0px;
+    font-size: 30px;}
+.main-box{
     width: 80%;
-    display:grid;
-    grid-template-columns: repeat(2, 2fr);
-    place-items: center;
-}
-.menu-item{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-   margin: 30px 0px;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+place-items:center;
+} 
+.recipi{
+    width: 40%;
 }
 img{
     width: 300px;
     height: 300px;
-} 
-.item-info{
+}
+.main-contaier{
+    background-color: white;
+    width: 300px;
+    height: 500px;
+}
+.info{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 20px;
+    width: 100%;
+    border-bottom: 1px solid black;
+
 }
-.name-price{width: 100%;}
-.name{margin-top: 20px;}
-.price{margin-bottom: 20px;}
+.name{
+    margin: 10px 0px;
+}
