@@ -75,3 +75,22 @@ border:1px solid cadetblue;
     align-items: center;
     justify-content: center;
 } 
+
+.newthings{
+height: 400px;
+}
+.main-none{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 80px;
+
+
+}
+.newthings >.info{
+    border: none;
+    text-align: center;
+    padding: 1px;
+
+}
