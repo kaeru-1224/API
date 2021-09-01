@@ -2,9 +2,10 @@
 const btn=document.querySelector(".btn");
 
 const cont= document.querySelector(".main-box")
-const overlay =document.querySelector(".overlay")
-const closeBtn=document.querySelector(".box-close")
-
+const overlay =document.querySelector(".recipe-container")
+const closeBtn=document.querySelector(".fas")
+const over =document.querySelector(".recipe-big")
+const recommend=document.querySelector(".result>h4")
 
 //첫 로딩 시에 랜덤으로 음식을 보여주도록진행
 window.addEventListener('DOMContentLoaded',randomFood())
@@ -14,9 +15,6 @@ function randomFood(){
     .then(res=>res.json())
     .then(data=>{
         let html ="";
-        //.main-box클래스 추가해서 css바꿔주기..
-        const random= document.querySelector(".main-box")
-        const recommend=document.querySelector(".result>h4")
         if(data.meals){
             data.meals.forEach(meal=>{
                 html =`<section class="main-contaier newthings" data-id= "${meal.idMeal}" > 
@@ -28,11 +26,21 @@ function randomFood(){
                     <button class="check">click</button>
                 </div>
             </section>`} )
-        }random.classList.toggle("random")
-     
+        }
+        //.main-box클래스 추가해서 css바꿔주기..:css통해서 랜덤 아이템 중앙으로 오도록진행
+        cont.classList.toggle("random")
+        gotonew()
         recommend.innerText="Today's Meal"
         cont.innerHTML=html;});}
 
+function removeClass(){
+ 
+    cont.classList.remove("over")
+ 
+    cont.classList.remove("random")
+  
+    cont.classList.remove("main-none")
+}
 //api를 이용해서 음식 재료를 통해서 음식 리스트 출력
 btn.addEventListener('click',searchFood)
 function searchFood(){
@@ -44,37 +52,33 @@ function searchFood(){
     .then(data=>{
         //array로 받아준 data를 각 html으로 만들어주기위함
         let html ="";
-        const random= document.querySelector(".main-box")
         const recommend=document.querySelector(".result>h4")
         //data.meals가 존재하는 경우 진행
         if(data.meals){
-            random.classList.remove("over")
-            random.classList.remove("random")
-            random.classList.remove("main-none")
+          
             data.meals.forEach(meal=>{
                 //html에 meal의 요소들을 하나씩하나씩 넣어준다 
-                html +=`<section class="main-contaier" data-id= "${meal.idMeal}"> 
+                html +=`
+                <section class="main-contaier" data-id= "${meal.idMeal}"> 
                 <div class="Thumb">
                     <img src="${meal.strMealThumb}" alt="food-pic"> 
                 </div>
                 <div class="info">
                     <h4 class="name">${meal.strMeal}</h4>
-               
                 </div>
                 <div class="recipi">
                     <p>Check recipi</p>
                     <button class="check">click</button>
                 </div>
+                </section>
             `
 
             } )
         }else {
-            random.classList.remove("over")
-            random.classList.remove("random")
-            random.classList.add("main-none")
+            removeClass()
             html=`Sorry We Dont Have ${serchInputTxt}😢`
-
         }
+        removeClass()
         recommend.innerText="Check your result"
         cont.innerHTML=html;
 
@@ -87,7 +91,6 @@ function searchFood(){
 
 
 //음식 레시피 보여주기위한 modal 
-closeBtn.addEventListener('click',()=>{overlay.classList.toggle("none")})
 
 //음식 레시피 넣어주기위해서, 현재 클릭한 이벤트 버튼을 찾아주도록함 
  
@@ -101,42 +104,40 @@ function getRecipe(e){
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
         .then(items=> items.json())
         .then(data=>{
-            showRecipe(data.meals)
+            showRecipe(data.meals)})}}
+
+            function showRecipe(meal){
+                console.log(meal);
+                //meal이 array형태로 나오므로 meal의 첫번째 대상이 meal이라고 해준다
+                meal=meal[0];
+                let html=`
+                    <h1 class="over-name">${meal.strMeal}</h1>
+                    <img src="${meal.strMealThumb}"class="overlay-img" alt="food-img">
+                    <div class="de"> 
+                        <p>${meal.strInstructions}.</p>
+                    </div>
+                    <button class="see"><a href = "${meal.strYoutube}" target = "_blank">Watch Video</a></button> 
+                        </div>
+                    <button class="box-close">close</button>
             
-        })
-   
-    }
-    
+                `
+                overlay.innerHTML=html;
+                over.classList.remove(`remove`);
+            
+            
+            
+            
+            }
+            
+            //진행시에는 버튼을 찾아주어야한다 생각해주었는데,그러면 진행이안되고 
+            //조금더 큰 범위를 잡아주어야햇음 왜지???
+            cont.addEventListener('click', getRecipe)
 
-}
+            //닫음 버튼을 누를시에 기존의 return했던거 없는 상태로 만들어주고 
+            // none다시 붙여주는거로, 그런데 그거 없이도 검색을 할때도 넣어주여야 할 것 같음 
+            closeBtn.addEventListener('click',gotonew)
 
-function showRecipe(meal){
-    console.log(meal);
-    //meal이 array형태로 나오므로 meal의 첫번째 대상이 meal이라고 해준다
-    meal=meal[0];
-    let html=`
-    <div class="over-box" > 
-    <div class="over-info"> 
-        <h1 class="over-name">${meal.strMeal}</h1>
-        <img src="${meal.strMealThumb}"class="overlay-img" alt="food-img">
-        <div class="de"> 
-            <p>${meal.strInstructions}.</p>
-        </div>
-        <button class="see"><a href = "${meal.strYoutube}" target = "_blank">Watch Video</a></button> 
-
-</div>
-
-   
-   <button class="box-close">close</button>
-    `
-    overlay.innerHTML=html;
-    overlay.classList.remove('none')
-
-
-
-
-}
-
-//진행시에는 버튼을 찾아주어야한다 생각해주었는데,그러면 진행이안되고 
-//조금더 큰 범위를 잡아주어야햇음 왜지???
-cont.addEventListener('click', getRecipe)
+            function gotonew(){
+                overlay.innerHTML="";
+                over.classList.add(`remove`);
+            }
