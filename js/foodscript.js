@@ -3,7 +3,7 @@ const btn=document.querySelector(".btn");
 
 const cont= document.querySelector(".main-box")
 const overlay =document.querySelector(".recipe-container")
-const closeBtn=document.querySelector(".box-close")
+const closeBtn=document.querySelector(".fas")
 const over =document.querySelector(".recipe-big")
 const recommend=document.querySelector(".result>h4")
 
@@ -29,6 +29,7 @@ function randomFood(){
         }
         //.main-box클래스 추가해서 css바꿔주기..:css통해서 랜덤 아이템 중앙으로 오도록진행
         cont.classList.toggle("random")
+        gotonew()
         recommend.innerText="Today's Meal"
         cont.innerHTML=html;});}
 
@@ -120,8 +121,8 @@ function getRecipe(e){
                     <button class="box-close">close</button>
             
                 `
-                overlay.parentElement.innerHTML=html;
-                over.classList.toggle(`none`);
+                overlay.innerHTML=html;
+                over.classList.remove(`remove`);
             
             
             
@@ -134,3 +135,9 @@ function getRecipe(e){
 
             //닫음 버튼을 누를시에 기존의 return했던거 없는 상태로 만들어주고 
             // none다시 붙여주는거로, 그런데 그거 없이도 검색을 할때도 넣어주여야 할 것 같음 
+            closeBtn.addEventListener('click',gotonew)
+
+            function gotonew(){
+                overlay.innerHTML="";
+                over.classList.add(`remove`);
+            }
